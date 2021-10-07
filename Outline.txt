@@ -1,0 +1,37 @@
+
+
+
+
+*Nouns*
+
+-Customer
+
+-Vending Machine %
+-Money %
+-Inventory +++++
+    -Product %
+        -beverages %
+        -candy %
+        -gum %
+        -chips %
+-Log %
+-Slot Identifier //maybe interface
+-Menu //is our UI %
+-balance %
+
+
+*Verbs*
+
+-Purchase or Transaction
+-Exit
+-getChange
+-getMoney
+-Feed Money
+-Stock
+
+
+*Interface*
+-Display
+
+    -SOLDOUT
+
