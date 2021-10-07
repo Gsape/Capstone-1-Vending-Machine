@@ -1,4 +1,4 @@
-package com.techelevator;
+package Product;
 
 public class Beverage {
 }
