@@ -1,6 +1,8 @@
 package com.techelevator.UI;
 //I think we need to have this all under the com.techelevator then inside of product, I believe
 
+import com.techelevator.Product.Gum;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 
 public class Inventory {
     String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
-    int startingStock = 5;
+    String[] splitLineAtBar;
 
 
     public Inventory(){
@@ -25,7 +27,8 @@ public class Inventory {
     }
 
 
-    public String getInventory() {
+
+    public void createInventory() {
         String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
         File csvWeAreReading = new File(filename);
 //        System.out.println("Do we make it here?");
@@ -35,8 +38,40 @@ public class Inventory {
         try (Scanner fileScanner2 = new Scanner(csvWeAreReading)) {
             while (fileScanner2.hasNextLine()) {
                 String currentLine = fileScanner2.nextLine();
-                System.out.println(currentLine);
-                String[] splitLineAtBar = currentLine.split("\\|");
+//                System.out.println(currentLine);
+                splitLineAtBar = currentLine.split("\\|");
+//                System.out.println(splitLineAtBar);
+                //for i=
+                //Chips i = new Chip()
+//                Chips potatoCrisps = new Chips(potatoCrisps, 3.50, 5);
+                for(int i = 0; i < 5; i++){
+                    String productType = splitLineAtBar[3];
+//                    System.out.println(splitLineAtBar[3]);
+                    String slotPosition = splitLineAtBar[0];
+                    String itemName = splitLineAtBar[1];
+                    String itemCost = splitLineAtBar[2];
+                    Gum testGumName = new Gum(itemName, itemCost, 5);
+//                    System.out.println(testGumName.getCost());
+//                    System.out.println(testGumName.getStock() + " stock");
+//                    System.out.println(testGumName.getName());
+                }
+
+
+
+//                switch (variable or an integer expression)
+//                {
+//                    case constant:
+//                        //Java code
+//                        ;
+//                    case constant:
+//                        //Java code
+//                        ;
+//                    default:
+//                        //Java code
+//                        ;
+//                }
+
+
 //                System.out.println(Arrays.toString(splitLineAtBar)); //COMPLETELY RANDOM SIDE NOTE - just came to me we could do a dirty way to figure out what type of object we'll be creating by looking at the last char on each line lol
                 //^^ these few lines are just to test file access / reading
                 //I know we talked about doing a map for the each product but I just threw the array in real quick to test
@@ -44,9 +79,16 @@ public class Inventory {
                 //TODO From here we need to start creating the product so I'm gonna hop over and build out a little of the product / subclasses
             }
         } catch (FileNotFoundException e) {
-            System.out.println("The only way filenotfound hits if I messed up the filepath which is entirely likely - so this stays for now");
+            System.out.println("The only way file not found hits if I messed up the filepath which is entirely likely - so this stays for now");
         }
-        return "hey this works";
+    }
+
+    public void printInventory(){
+        System.out.println(Arrays.toString(splitLineAtBar));
+//        for(String inside : splitLineAtBar){
+////            System.out.println(inside);
+//        }
+
     }
 }
 /* \

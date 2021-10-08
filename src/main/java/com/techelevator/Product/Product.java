@@ -3,6 +3,7 @@ package com.techelevator.Product;
 public abstract class Product {
     private String name;
     private String cost;
+    private int stock;
     //couple private fields to be able to assign getters
         //note - these should not require setters as we are getting this data from the CSV
         //user does not have access to change any of this
@@ -10,9 +11,11 @@ public abstract class Product {
 
     //TODO Constructor(s)? - do we need more than one?
     //I don't think so
-    public Product(String name, String cost){
+    public Product(String name, String cost, int stock){
         this.name = name;
         this.cost = cost;
+        this.stock = stock;
+
     }
 
     //getters for those fields
@@ -21,7 +24,12 @@ public abstract class Product {
     }
     public String getCost() {
         return cost;
-    }//TODO - just a note I defaulted to string bc we have used this in the past but we may want to double this?
+    }
+    public int getStock(){
+        return stock;
+    }
+
+    //TODO - just a note I defaulted to string bc we have used this in the past but we may want to double this?
     //or just force a conversion when we need to math?
 }
 
