@@ -15,6 +15,9 @@ public class Money {
     }
 
 
+    public double getBalance(){
+        return balance;
+    }
     /*
     public double changReturned(Double balance, Product item){
         do all the math

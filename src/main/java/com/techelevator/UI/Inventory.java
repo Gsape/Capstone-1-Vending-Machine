@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Inventory {
     String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
+    int startingStock = 5;
 
 
     public Inventory(){
@@ -27,7 +28,7 @@ public class Inventory {
     public String getInventory() {
         String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
         File csvWeAreReading = new File(filename);
-        System.out.println("Do we make it here?");
+//        System.out.println("Do we make it here?");
         //We shouldn't need to run any file verification - again this is bc we are giving the file - no user input needed on this portion
         //Test to see if the file reading is working - just simple print line from file
         //while file has a line print it out

@@ -13,6 +13,7 @@ public class VendingMachineCLI {
 		//Start of CLI interface that will be shown to user as well as getting input
 		Scanner input = new Scanner(System.in);
 		System.out.println("------Vendo-Matic 800------");
+		System.out.println("Please select one below");
 		System.out.println("(1) Display Vending Machine Items");
 		System.out.println("(2) Purchase");
 		System.out.println("(3) Exit");
@@ -31,9 +32,18 @@ public class VendingMachineCLI {
 		//TODO remember when feeding money to feed a double or string then convert
 		if(userResponseMainMenu.equals("2")){
 			String userResponsePurchaseMenu = "0";
+			Money userBalance = new Money();
+			System.out.println("Please select one below");
 			System.out.println("(1) Feed Money");
 			System.out.println("(2) Select Product");
 			System.out.println("(3) Finish Transaction");
+			System.out.println("Current Money Provided: " + userBalance.getBalance());
+			while(userResponsePurchaseMenu != "3"){
+				if(userResponsePurchaseMenu.equals("1")){
+					System.out.println("Please feed in money in whole dollar amounts $1, $2, $5, $10");
+
+				}
+			}
 		}
 
 	}
