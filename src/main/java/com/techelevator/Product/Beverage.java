@@ -1,4 +1,4 @@
-package Product;
+package com.techelevator.Product;
 
 public class Beverage extends Product{
 

@@ -1,4 +1,4 @@
-package Product;
+package com.techelevator.Product;
 //Ok we are going to use this class to create each of our items so lets go
 public abstract class Product {
     private String name;

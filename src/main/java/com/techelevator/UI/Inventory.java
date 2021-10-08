@@ -1,4 +1,4 @@
-package UI;
+package com.techelevator.UI;
 //I think we need to have this all under the com.techelevator then inside of product, I believe
 
 import java.io.File;
@@ -11,6 +11,7 @@ public class Inventory {
         //Pull in the csv - we can hard code this as a string bc it is given - we do not need to ask the user for file location (like previous assignments)
         //TODO fix the filepath - I guess I could just use the absolute for testing purposes
         String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
+
         File csvWeAreReading = new File(filename);
         //We shouldn't need to run any file verification - again this is bc we are giving the file - no user input needed on this portion
         //Test to see if the file reading is working - just simple print line from file
