@@ -1,4 +1,8 @@
 package Product;
 
-public class Gum {
+public class Gum extends Product{
+
+    public Gum(String name, String cost) {
+        super(name, cost);
+    }
 }

@@ -1,4 +1,7 @@
 package Product;
 
-public class Chips {
+public class Chips extends Product {
+    public Chips(String name, String cost) {
+        super(name, cost);
+    }
 }
