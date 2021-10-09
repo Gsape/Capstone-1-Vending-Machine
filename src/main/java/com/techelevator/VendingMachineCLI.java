@@ -1,8 +1,12 @@
 package com.techelevator;
 
 import com.techelevator.Product.Beverage;
+import com.techelevator.Product.Candy;
+import com.techelevator.Product.Chips;
+import com.techelevator.Product.Gum;
 import com.techelevator.UI.Inventory;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 // Vending Machine Command Line Interface application
@@ -12,6 +16,28 @@ public class VendingMachineCLI {
 		// Make some objects here!
 		Inventory actualInventory = new Inventory();
 		actualInventory.createInventory();
+
+//		Beverage bev1 = new Beverage("Cola", "1.25",5);
+//		Beverage bev2 = new Beverage("Dr. Salt", "1.50",5);
+//		Beverage bev3 = new Beverage("Mountain Melter", "1.50",5);
+//		Beverage bev4 = new Beverage("Heavy", "1.50",5);
+//
+//		Chips chip1 = new Chips("Potato Crisps", "3.05",5);
+//		Chips chip2 = new Chips("Stackers", "1.45",5);
+//		Chips chip3 = new Chips("Grain Waves", "2.75",5);
+//		Chips chip4 = new Chips("Cloud Popcorn", "3.65",5);
+//
+//		Gum gum1 = new Gum("U-Chews", "0.85",5);
+//		Gum gum2 = new Gum("Little League Chew", "0.95",5);
+//		Gum gum3 = new Gum("Chiclets", "0.75",5);
+//		Gum gum4 = new Gum("Triplemint", "0.75",5);
+//
+//		Candy candy1 = new Candy("Moonpie", "1.80",5);
+//		Candy candy2 = new Candy("Cowtales", "1.50",5);
+//		Candy candy3 = new Candy("Wonka Bar", "1.50",5);
+//		Candy candy4 = new Candy("Crunchie", "1.75",5);
+
+		//lets take all product objects and create 4 hash maps for each item type
 
 		//Start of CLI interface that will be shown to user as well as getting input
 		Scanner input = new Scanner(System.in);
@@ -61,7 +87,7 @@ public class VendingMachineCLI {
 					}
 					if(userResponsePurchaseMenu.equals("2")){
 						/*
-						-Print inventory
+						-Print inventory OK*
 						-Pick item by slot location
 						-keep track of total per item (starts @ 5)
 						 */
@@ -69,6 +95,8 @@ public class VendingMachineCLI {
 //						System.out.println(testDrink.getCost());
 //						System.out.println(testDrink.getStock() + " stock");
 //						System.out.println(testDrink.getName());
+						actualInventory.printInventory();
+
 						break;
 					}
 

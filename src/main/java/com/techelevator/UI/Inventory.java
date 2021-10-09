@@ -1,6 +1,9 @@
 package com.techelevator.UI;
 //I think we need to have this all under the com.techelevator then inside of product, I believe
 
+import com.techelevator.Product.Beverage;
+import com.techelevator.Product.Candy;
+import com.techelevator.Product.Chips;
 import com.techelevator.Product.Gum;
 
 import java.io.File;
@@ -11,27 +14,25 @@ import java.util.Scanner;
 public class Inventory {
     String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
     String[] splitLineAtBar;
+    Object[] arrayOfObjects;
 
+    Chips chip1;
+    Chips chip2;
+    Beverage bev1;
+    Candy candy1;
+    Gum gum1;
 
     public Inventory(){
-        File csvWeAreReading = new File(filename);
-        //We shouldn't need to run any file verification - again this is bc we are giving the file - no user input needed on this portion
-        //Test to see if the file reading is working - just simple print line from file
-        //while file has a line print it out
-        try (Scanner fileScanner = new Scanner(csvWeAreReading)) {
-            //Just create the scanner
-            System.out.println("File opened");
-        } catch (FileNotFoundException e) {
-            System.out.println("The only way file not found hits if I messed up the filepath which is entirely likely - so this stays for now");
-        }
+
     }
-
-
 
     public void createInventory() {
         String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
         File csvWeAreReading = new File(filename);
 //        System.out.println("Do we make it here?");
+        //We shouldn't need to run any file verification - again this is bc we are giving the file - no user input needed on this portion
+        //Test to see if the file reading is working - just simple print line from file
+        //while file has a line print it out
         //We shouldn't need to run any file verification - again this is bc we are giving the file - no user input needed on this portion
         //Test to see if the file reading is working - just simple print line from file
         //while file has a line print it out
@@ -50,10 +51,9 @@ public class Inventory {
                     String slotPosition = splitLineAtBar[0];
                     String itemName = splitLineAtBar[1];
                     String itemCost = splitLineAtBar[2];
-                    Gum testGumName = new Gum(itemName, itemCost, 5);
-//                    System.out.println(testGumName.getCost());
-//                    System.out.println(testGumName.getStock() + " stock");
-//                    System.out.println(testGumName.getName());
+//                    chipFor = new Chips(itemName, itemCost, 5);
+//
+                    System.out.println(currentLine);
                 }
 
 
@@ -81,10 +81,11 @@ public class Inventory {
         } catch (FileNotFoundException e) {
             System.out.println("The only way file not found hits if I messed up the filepath which is entirely likely - so this stays for now");
         }
+
     }
 
     public void printInventory(){
-        System.out.println(Arrays.toString(splitLineAtBar));
+        System.out.println(Arrays.toString(splitLineAtBar) + " 5");
 //        for(String inside : splitLineAtBar){
 ////            System.out.println(inside);
 //        }
