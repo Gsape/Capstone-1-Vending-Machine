@@ -139,6 +139,8 @@ public class Inventory {
     }
 
     public void printInventory(){
+        //todo if statement for if product sold out display sold out
+
         for (Product insideOfArray : arrayListOfProducts){
             System.out.println(insideOfArray.getSlotLocation()+ " " +insideOfArray.getName() + " " + insideOfArray.getCost() + " " + insideOfArray.getStock());
         }

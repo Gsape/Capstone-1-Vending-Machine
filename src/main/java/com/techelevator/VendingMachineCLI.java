@@ -70,13 +70,16 @@ public class VendingMachineCLI {
 			- We could set up a switch statement
 			 */
 		//TODO While userResponseMainMenu = 3
-		if (userResponseMainMenu.equals("1")){
-			actualInventory.printInventory();
-//			actualInventory.getInventory();
-//			System.out.println("Are we here ????");
-		}
+
 		//TODO remember when feeding money to feed a double or string then convert
 		while(userResponseMainMenu != "3"){
+			if (userResponseMainMenu.equals("1")){
+				actualInventory.printInventory();
+//			actualInventory.getInventory();
+//			System.out.println("Are we here ????");
+				userResponseMainMenu = "2"; //send them to 2
+
+			}
 			if(userResponseMainMenu.equals("2")){
 				String userResponsePurchaseMenu = "0";
 				System.out.println("Please select one below");
@@ -84,6 +87,7 @@ public class VendingMachineCLI {
 				System.out.println("(2) Select Product");
 				System.out.println("(3) Finish Transaction ");
 				System.out.println("Current Money Provided: " + userBalance.getBalance());
+
 				userResponsePurchaseMenu = input.nextLine();
 				while(userResponsePurchaseMenu != "3"){ //TODO THIS IS STILL AN INFINITE LOOP - COME BACK TO FIX
 					//TODO validation for not choosing correct
@@ -117,17 +121,25 @@ public class VendingMachineCLI {
 						//todo validation
 						String userProductChoice = input.nextLine();
 						System.out.println("You selected " + userProductChoice);
+						System.out.println("transaction stuff happening behind scenes");
 						/*
 						-validate user chose A-4 / D-4 (if code does not exist)
 						-check if sold out - if so informed and return purchase menu
 						-if valid remove stock remove balance
+						-we will need an arraylist for LOG later. - so pop something in there when purchase
 						-print if candy gum etc noise
-						-after dispense update balance and return customer to purchase menu
+						-after dispense update balance and return customer to purchase menu (with break at end)
 						 */
+						break;
 					}
-
+					if(userResponsePurchaseMenu.equals("3")){
+						System.out.println("attempting to return to main");
+						break;
+					}
 				}
 			}
+			System.out.println("we broke out to main menu");
+			break;
 		}
 
 	}
