@@ -6,6 +6,7 @@ import com.techelevator.Product.Chips;
 import com.techelevator.Product.Gum;
 import com.techelevator.UI.Inventory;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -14,24 +15,25 @@ public class VendingMachineCLI {
 
 	public static void main(String[] args) {
 		// Make some objects here!
+
+		//Ok this is a bit redundant here I think we're creating an inventory object but also an arraylist of chip objects
 		Inventory actualInventory = new Inventory();
-		actualInventory.createInventory();
+
+		ArrayList<Chips> arrayedInventoryChips = new ArrayList<>();
+		arrayedInventoryChips = actualInventory.createInventory();
 
 //		Beverage bev1 = new Beverage("Cola", "1.25",5);
 //		Beverage bev2 = new Beverage("Dr. Salt", "1.50",5);
 //		Beverage bev3 = new Beverage("Mountain Melter", "1.50",5);
 //		Beverage bev4 = new Beverage("Heavy", "1.50",5);
-//
 //		Chips chip1 = new Chips("Potato Crisps", "3.05",5);
 //		Chips chip2 = new Chips("Stackers", "1.45",5);
 //		Chips chip3 = new Chips("Grain Waves", "2.75",5);
 //		Chips chip4 = new Chips("Cloud Popcorn", "3.65",5);
-//
 //		Gum gum1 = new Gum("U-Chews", "0.85",5);
 //		Gum gum2 = new Gum("Little League Chew", "0.95",5);
 //		Gum gum3 = new Gum("Chiclets", "0.75",5);
 //		Gum gum4 = new Gum("Triplemint", "0.75",5);
-//
 //		Candy candy1 = new Candy("Moonpie", "1.80",5);
 //		Candy candy2 = new Candy("Cowtales", "1.50",5);
 //		Candy candy3 = new Candy("Wonka Bar", "1.50",5);
@@ -43,6 +45,20 @@ public class VendingMachineCLI {
 		Scanner input = new Scanner(System.in);
 		Money userBalance = new Money();
 		System.out.println("------Vendo-Matic 800------");
+
+
+
+
+
+		//bunch of object array list tests
+		int stockInStock = arrayedInventoryChips.get(0).getStock();
+		System.out.println(stockInStock);
+
+
+
+
+
+
 		System.out.println("Please select one below");
 		System.out.println("(1) Display Vending Machine Items");
 		System.out.println("(2) Purchase");

@@ -1,5 +1,32 @@
 package com.techelevator.UI;
-//I think we need to have this all under the com.techelevator then inside of product, I believe
+//TODO things we dont wanna forget / push off / next in line to attack after we solve the object issue - which I kind of solved but need to do a major refactor sadly
+
+//Inventory
+    /*
+    -I want to rework this and maybe use the menu for the actual menu stuff (i forgot about this class when building earlier)
+        - not 100% necessary or priority but if we have time we should move the whole prompt to Menu
+
+
+     -Inventory rework
+        -create new inventory on CLI with new Inventory() - we should only need to do this once per running the program
+           -have the constructor call create inventory?? - kind of doing this now partially'
+
+
+     */
+
+
+
+
+
+//Functionality of transactions
+            /*
+            -check to see if we have enough money
+            -check to see if enough stock
+            -if both OK
+                -remove from user balance
+                -remove from stock
+                -add to log (all info)
+             */
 
 import com.techelevator.Product.Beverage;
 import com.techelevator.Product.Candy;
@@ -8,25 +35,34 @@ import com.techelevator.Product.Gum;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Inventory {
     String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
     String[] splitLineAtBar;
-    Object[] arrayOfObjects;
+    Object[] arrayOfObjects;//dont like this
+    ArrayList<Chips> arrayListOfProducts = new ArrayList<>();
 
     Chips chip1;
     Chips chip2;
+    Chips chip3;
+    Chips chip4;
     Beverage bev1;
     Candy candy1;
     Gum gum1;
-
+//couple ideas for our object issue. we could just return some sort of collection of objects in the creation method
+    //or
+    //create an empty collection (hash map / array / arraylist whatever) then pass that into the creation fill it up and return it
+    //idk just rambling ideas to get them out and on paper for tomorrow
     public Inventory(){
+//        createInventory(); //this would allow us to remove the redundancy we have on the CLI at the moment
 
     }
 
-    public void createInventory() {
+    public ArrayList<Chips> createInventory() {
         String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
         File csvWeAreReading = new File(filename);
 //        System.out.println("Do we make it here?");
@@ -42,18 +78,16 @@ public class Inventory {
 //                System.out.println(currentLine);
                 splitLineAtBar = currentLine.split("\\|");
 //                System.out.println(splitLineAtBar);
-                //for i=
-                //Chips i = new Chip()
-//                Chips potatoCrisps = new Chips(potatoCrisps, 3.50, 5);
+                //
                 for(int i = 0; i < 5; i++){
                     String productType = splitLineAtBar[3];
 //                    System.out.println(splitLineAtBar[3]);
                     String slotPosition = splitLineAtBar[0];
                     String itemName = splitLineAtBar[1];
                     String itemCost = splitLineAtBar[2];
-//                    chipFor = new Chips(itemName, itemCost, 5);
-//
-                    System.out.println(currentLine);
+                    chip1 = new Chips(itemName, itemCost,5, slotPosition);
+//                    System.out.println(currentLine);
+                    arrayListOfProducts.add(chip1);
                 }
 
 
@@ -81,6 +115,8 @@ public class Inventory {
         } catch (FileNotFoundException e) {
             System.out.println("The only way file not found hits if I messed up the filepath which is entirely likely - so this stays for now");
         }
+
+        return arrayListOfProducts;
 
     }
 
