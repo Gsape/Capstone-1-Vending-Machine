@@ -111,9 +111,19 @@ public class VendingMachineCLI {
 //						System.out.println(testDrink.getCost());
 //						System.out.println(testDrink.getStock() + " stock");
 //						System.out.println(testDrink.getName());
+						System.out.println("Here is the inventory");
 						actualInventory.printInventory();
-
-						break;
+						System.out.println("Select product code");
+						//todo validation
+						String userProductChoice = input.nextLine();
+						System.out.println("You selected " + userProductChoice);
+						/*
+						-validate user chose A-4 / D-4 (if code does not exist)
+						-check if sold out - if so informed and return purchase menu
+						-if valid remove stock remove balance
+						-print if candy gum etc noise
+						-after dispense update balance and return customer to purchase menu
+						 */
 					}
 
 				}

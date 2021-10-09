@@ -55,8 +55,8 @@ public class Inventory {
     //create an empty collection (hash map / array / arraylist whatever) then pass that into the creation fill it up and return it
     //idk just rambling ideas to get them out and on paper for tomorrow
     public Inventory(){
-        createInventory(); //this would allow us to remove the redundancy we have on the CLI at the moment
-
+        //this would allow us to remove the redundancy we have on the CLI at the moment
+        //TODO deal with this unnessary redundancy
     }
 
     public ArrayList<Product> createInventory() {
@@ -132,14 +132,16 @@ public class Inventory {
 //        System.out.println(stockInStock);
 //        System.out.println("did we make it");
 //        System.out.println(arrayListOfProducts.get(0).getName());
-//        System.out.println(arrayListOfProducts.size());
+        System.out.println(arrayListOfProducts.size() + "is this runnning twice?");
         return arrayListOfProducts;
 
 
     }
 
     public void printInventory(){
-        System.out.println(Arrays.toString(splitLineAtBar) + " 5");
+        for (Product insideOfArray : arrayListOfProducts){
+            System.out.println(insideOfArray.getSlotLocation()+ " " +insideOfArray.getName() + " " + insideOfArray.getCost() + " " + insideOfArray.getStock());
+        }
 //        for(String inside : splitLineAtBar){
 ////            System.out.println(inside);
 //        }
