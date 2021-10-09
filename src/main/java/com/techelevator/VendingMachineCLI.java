@@ -45,7 +45,7 @@ public class VendingMachineCLI {
 		Scanner input = new Scanner(System.in);
 		Money userBalance = new Money();
 		System.out.println("------Vendo-Matic 800------");
-
+		String userResponseMainMenu = "0";
 
 
 
@@ -55,15 +55,6 @@ public class VendingMachineCLI {
 //		System.out.println(stockInStock);
 
 
-
-
-
-
-		System.out.println("Please select one below");
-		System.out.println("(1) Display Vending Machine Items");
-		System.out.println("(2) Purchase");
-		System.out.println("(3) Exit");
-		String userResponseMainMenu = input.nextLine();
 		//TODO couple of options to go from here
 			/*
 			- We could do a few if statements to decide the movement
@@ -73,15 +64,22 @@ public class VendingMachineCLI {
 
 		//TODO remember when feeding money to feed a double or string then convert
 		while(userResponseMainMenu != "3"){
+			System.out.println("Main Main Menu - Once");
+			System.out.println("Please select one below");
+			System.out.println("(1) Display Vending Machine Items");
+			System.out.println("(2) Purchase");
+			System.out.println("(3) Exit");
+			userResponseMainMenu = input.nextLine();
+
 			if (userResponseMainMenu.equals("1")){
 				actualInventory.printInventory();
 //			actualInventory.getInventory();
 //			System.out.println("Are we here ????");
-				userResponseMainMenu = "2"; //send them to 2
 
 			}
 			if(userResponseMainMenu.equals("2")){
 				String userResponsePurchaseMenu = "0";
+				System.out.println("purchase menu");
 				System.out.println("Please select one below");
 				System.out.println("(1) Feed Money");
 				System.out.println("(2) Select Product");
@@ -122,6 +120,9 @@ public class VendingMachineCLI {
 						String userProductChoice = input.nextLine();
 						System.out.println("You selected " + userProductChoice);
 						System.out.println("transaction stuff happening behind scenes");
+						userResponsePurchaseMenu = "3";
+						//Go back to purchase menu - not main - bc if want to purchase more
+						//Finish transaction takes you back to MAIN to choose exit
 						/*
 						-validate user chose A-4 / D-4 (if code does not exist)
 						-check if sold out - if so informed and return purchase menu
@@ -130,16 +131,16 @@ public class VendingMachineCLI {
 						-print if candy gum etc noise
 						-after dispense update balance and return customer to purchase menu (with break at end)
 						 */
-						break;
 					}
-					if(userResponsePurchaseMenu.equals("3")){
-						System.out.println("attempting to return to main");
-						break;
-					}
+
 				}
 			}
-			System.out.println("we broke out to main menu");
-			break;
+			if(userResponseMainMenu.equals("3")){
+				System.out.println("EXITING");
+				break;
+
+			}
+
 		}
 
 	}
