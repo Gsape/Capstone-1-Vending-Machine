@@ -58,7 +58,7 @@ public class Inventory {
     //create an empty collection (hash map / array / arraylist whatever) then pass that into the creation fill it up and return it
     //idk just rambling ideas to get them out and on paper for tomorrow
     public Inventory(){
-//        createInventory(); //this would allow us to remove the redundancy we have on the CLI at the moment
+        createInventory(); //this would allow us to remove the redundancy we have on the CLI at the moment
 
     }
 

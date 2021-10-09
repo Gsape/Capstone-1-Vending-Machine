@@ -5,6 +5,7 @@ import com.techelevator.Product.Candy;
 import com.techelevator.Product.Chips;
 import com.techelevator.Product.Gum;
 import com.techelevator.UI.Inventory;
+import com.techelevator.UI.Menu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +21,8 @@ public class VendingMachineCLI {
 		Inventory actualInventory = new Inventory();
 
 		ArrayList<Chips> arrayedInventoryChips = new ArrayList<>();
-		arrayedInventoryChips = actualInventory.createInventory();
+//		arrayedInventoryChips = actualInventory.createInventory();
+		Menu newTestMenu = new Menu();
 
 //		Beverage bev1 = new Beverage("Cola", "1.25",5);
 //		Beverage bev2 = new Beverage("Dr. Salt", "1.50",5);
@@ -51,8 +53,8 @@ public class VendingMachineCLI {
 
 
 		//bunch of object array list tests
-		int stockInStock = arrayedInventoryChips.get(0).getStock();
-		System.out.println(stockInStock);
+//		int stockInStock = arrayedInventoryChips.get(0).getStock();
+//		System.out.println(stockInStock);
 
 
 
