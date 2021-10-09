@@ -19,10 +19,14 @@ public class Money {
         return balance;
     }
     /*
-    public double changReturned(Double balance, Product item){
+    public double changeReturned(Double balance, Product item){
         do all the math
 
     }
+     */
+
+    /*
+    public double
      */
 
 

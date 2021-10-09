@@ -1,9 +1,6 @@
 package com.techelevator;
 
-import com.techelevator.Product.Beverage;
-import com.techelevator.Product.Candy;
-import com.techelevator.Product.Chips;
-import com.techelevator.Product.Gum;
+import com.techelevator.Product.*;
 import com.techelevator.UI.Inventory;
 import com.techelevator.UI.Menu;
 
@@ -20,8 +17,9 @@ public class VendingMachineCLI {
 		//Ok this is a bit redundant here I think we're creating an inventory object but also an arraylist of chip objects
 		Inventory actualInventory = new Inventory();
 
-		ArrayList<Chips> arrayedInventoryChips = new ArrayList<>();
-//		arrayedInventoryChips = actualInventory.createInventory();
+		ArrayList<Product> arrayedInventoryChips = new ArrayList<>();
+		arrayedInventoryChips = actualInventory.createInventory();
+		System.out.println(arrayedInventoryChips.get(0).getName());
 		Menu newTestMenu = new Menu();
 
 //		Beverage bev1 = new Beverage("Cola", "1.25",5);

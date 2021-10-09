@@ -12,6 +12,8 @@ package com.techelevator.UI;
            -have the constructor call create inventory?? - kind of doing this now partially'
 
 
+        -Actually figure logic between creating objects and giving names in loop
+
      */
 
 
@@ -26,12 +28,10 @@ package com.techelevator.UI;
                 -remove from user balance
                 -remove from stock
                 -add to log (all info)
+             -
              */
 
-import com.techelevator.Product.Beverage;
-import com.techelevator.Product.Candy;
-import com.techelevator.Product.Chips;
-import com.techelevator.Product.Gum;
+import com.techelevator.Product.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,16 +43,13 @@ import java.util.Scanner;
 public class Inventory {
     String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
     String[] splitLineAtBar;
-    Object[] arrayOfObjects;//dont like this
-    ArrayList<Chips> arrayListOfProducts = new ArrayList<>();
+    ArrayList<Product> arrayListOfProducts = new ArrayList<>();
 
-    Chips chip1;
-    Chips chip2;
-    Chips chip3;
-    Chips chip4;
-    Beverage bev1;
-    Candy candy1;
-    Gum gum1;
+    Chips chips;
+    Beverage beverages;
+    Gum gums;
+    Candy candies;
+
 //couple ideas for our object issue. we could just return some sort of collection of objects in the creation method
     //or
     //create an empty collection (hash map / array / arraylist whatever) then pass that into the creation fill it up and return it
@@ -62,7 +59,7 @@ public class Inventory {
 
     }
 
-    public ArrayList<Chips> createInventory() {
+    public ArrayList<Product> createInventory() {
         String filename = "C:\\Users\\Student\\workspace\\TE-Capstone-1\\java-capstone-module-1-team-0\\vendingmachine.csv";
         File csvWeAreReading = new File(filename);
 //        System.out.println("Do we make it here?");
@@ -77,34 +74,37 @@ public class Inventory {
                 String currentLine = fileScanner2.nextLine();
 //                System.out.println(currentLine);
                 splitLineAtBar = currentLine.split("\\|");
-//                System.out.println(splitLineAtBar);
+//                System.out.println("should be 16 prints");
                 //
-                for(int i = 0; i < 5; i++){
-                    String productType = splitLineAtBar[3];
+//                System.out.println(splitLineAtBar + "inside while");
+                //if splitLineAtBar[3] == chips
+//                System.out.println(arrayListOfProducts.size());
+
+                String productType = splitLineAtBar[3];
 //                    System.out.println(splitLineAtBar[3]);
-                    String slotPosition = splitLineAtBar[0];
-                    String itemName = splitLineAtBar[1];
-                    String itemCost = splitLineAtBar[2];
-                    chip1 = new Chips(itemName, itemCost,5, slotPosition);
-//                    System.out.println(currentLine);
-                    arrayListOfProducts.add(chip1);
+                String slotPosition = splitLineAtBar[0];
+                String itemName = splitLineAtBar[1];
+                String itemCost = splitLineAtBar[2];
+//
+//                System.out.println(splitLineAtBar[3]);
+                if(productType.equals("Chip")){
+                    chips = new Chips(itemName, itemCost,5, slotPosition);
+                    arrayListOfProducts.add(chips);
+//                    System.out.println("test is it in the ifs");
                 }
-
-
-
-//                switch (variable or an integer expression)
-//                {
-//                    case constant:
-//                        //Java code
-//                        ;
-//                    case constant:
-//                        //Java code
-//                        ;
-//                    default:
-//                        //Java code
-//                        ;
-//                }
-
+                if(productType.equals("Drink")){
+                    beverages = new Beverage(itemName, itemCost,5, slotPosition);
+                    arrayListOfProducts.add(beverages);
+                }
+                if(productType.equals("Gum")){
+                    gums = new Gum(itemName, itemCost,5, slotPosition);
+                    arrayListOfProducts.add(gums);
+                }
+                if(productType.equals("Candy")){
+                    candies = new Candy(itemName, itemCost,5, slotPosition);
+                    arrayListOfProducts.add(candies);
+                }
+//
 
 //                System.out.println(Arrays.toString(splitLineAtBar)); //COMPLETELY RANDOM SIDE NOTE - just came to me we could do a dirty way to figure out what type of object we'll be creating by looking at the last char on each line lol
                 //^^ these few lines are just to test file access / reading
@@ -115,8 +115,26 @@ public class Inventory {
         } catch (FileNotFoundException e) {
             System.out.println("The only way file not found hits if I messed up the filepath which is entirely likely - so this stays for now");
         }
+//        System.out.println(splitLineAtBar + "split line at bar array");
+//        System.out.println(arrayListOfProducts + "arraylist of products as address");
+//        for(int i = 0; i <= arrayListOfProducts.size(); i++){
 
+//                    products = new Chips(itemName, itemCost,5, slotPosition);
+////                    System.out.println(currentLine);
+//                    arrayListOfProducts.add(products);
+//                    System.out.println("Is this printing 5 times");
+//        }
+
+//        for(Product chipsinside : arrayListOfProducts){
+//            System.out.println(chipsinside.getName()  + "test did it work");
+//        }
+//        int stockInStock = arrayListOfProducts.get(0).getStock();
+//        System.out.println(stockInStock);
+//        System.out.println("did we make it");
+//        System.out.println(arrayListOfProducts.get(0).getName());
+//        System.out.println(arrayListOfProducts.size());
         return arrayListOfProducts;
+
 
     }
 
