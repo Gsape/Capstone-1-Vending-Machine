@@ -97,7 +97,7 @@ public class Inventory {
                     arrayListOfProducts.add(beverages);
                 }
                 if(productType.equals("Gum")){
-                    gums = new Gum(itemName, itemCost,5, slotPosition);
+                    gums = new Gum(itemName, itemCost,5, slotPosition); //TODO  CHANGE BACK TO 5!!!!!!!!!!
                     arrayListOfProducts.add(gums);
                 }
                 if(productType.equals("Candy")){
@@ -141,13 +141,15 @@ public class Inventory {
     public void printInventory(){
         //todo if statement for if product sold out display sold out
 
-        for (Product insideOfArray : arrayListOfProducts){
-            System.out.println(insideOfArray.getSlotLocation()+ " " +insideOfArray.getName() + " " + insideOfArray.getCost() + " " + insideOfArray.getStock());
-        }
-//        for(String inside : splitLineAtBar){
-////            System.out.println(inside);
-//        }
+        for (Product insideOfArray : arrayListOfProducts) {
+            if (insideOfArray.getStock() == 0){
+                System.out.println(insideOfArray.getSlotLocation()+ " " +insideOfArray.getName() + " " + insideOfArray.getCost() + " sold out!");
+            } else {
+                System.out.println(insideOfArray.getSlotLocation()+ " " +insideOfArray.getName() + " " + insideOfArray.getCost() + " " + insideOfArray.getStock());
+            }
+//
 
+        }
     }
 }
 /* \

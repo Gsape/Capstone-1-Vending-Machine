@@ -1,4 +1,7 @@
 package com.techelevator.Product;
+
+import com.techelevator.Money;
+
 //Ok we are going to use this class to create each of our items so lets go
 public abstract class Product {
     private String name;
@@ -32,6 +35,29 @@ public abstract class Product {
     public String getSlotLocation(){
         return slotLocation;
     }
+
+    public boolean inStock(Product itemWanted){
+        if(itemWanted.getStock() <=0){
+            System.out.println("Sold out");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public Product removeStock(Product stockToRemove, Money userBalance) {
+        System.out.println(stockToRemove.getStock());
+        stock--;
+        System.out.println(stockToRemove.getStock());
+        returnMessage(stockToRemove, userBalance);
+        return stockToRemove;
+
+    }
+
+    public void returnMessage(Product stockToRemove, Money userBalance){
+        //item name cost money remaining + message
+        System.out.println(stockToRemove.getName() + " $" + stockToRemove.getCost() + " $" + userBalance.getBalance());
+    }
+
 
 
     //TODO - just a note I defaulted to string bc we have used this in the past but we may want to double this?

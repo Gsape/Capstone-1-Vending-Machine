@@ -17,9 +17,9 @@ public class VendingMachineCLI {
 		//Ok this is a bit redundant here I think we're creating an inventory object but also an arraylist of chip objects
 		Inventory actualInventory = new Inventory();
 
-		ArrayList<Product> arrayedInventoryChips = new ArrayList<>();
-		arrayedInventoryChips = actualInventory.createInventory();
-		System.out.println(arrayedInventoryChips.get(0).getName());
+		ArrayList<Product> arrayedListInventory = new ArrayList<>();
+		arrayedListInventory = actualInventory.createInventory();
+		System.out.println(arrayedListInventory.get(0).getName());
 		Menu newTestMenu = new Menu();
 
 //		Beverage bev1 = new Beverage("Cola", "1.25",5);
@@ -64,7 +64,7 @@ public class VendingMachineCLI {
 
 		//TODO remember when feeding money to feed a double or string then convert
 		while(userResponseMainMenu != "3"){
-			System.out.println("Main Main Menu - Once");
+			System.out.println("Main Main Menu");
 			System.out.println("Please select one below");
 			System.out.println("(1) Display Vending Machine Items");
 			System.out.println("(2) Purchase");
@@ -85,6 +85,7 @@ public class VendingMachineCLI {
 				System.out.println("(2) Select Product");
 				System.out.println("(3) Finish Transaction ");
 				System.out.println("Current Money Provided: " + userBalance.getBalance());
+				//TODO this is where we need to get back to the purchase menu not main menu - preferably without whileCEPTION
 
 				userResponsePurchaseMenu = input.nextLine();
 				while(userResponsePurchaseMenu != "3"){ //TODO THIS IS STILL AN INFINITE LOOP - COME BACK TO FIX
@@ -119,8 +120,46 @@ public class VendingMachineCLI {
 						//todo validation
 						String userProductChoice = input.nextLine();
 						System.out.println("You selected " + userProductChoice);
-						System.out.println("transaction stuff happening behind scenes");
-						userResponsePurchaseMenu = "3";
+
+						//need iterate thru arrayedListInventory.getSlotLocation && compare to userProductChoice
+						for(Product singleItem : arrayedListInventory) {//index
+							//CALL money w/  userBalance.getBalance to start validation
+							if (singleItem.getSlotLocation().equals(userProductChoice)) {
+								System.out.println("Checking for stock");
+//								singleItem.inStock(singleItem);
+//								if (singleItem.inStock(singleItem)) {
+//									System.out.println("removing one item from stock");
+//									singleItem.removeStock(singleItem);
+//								} else {
+//									System.out.println("sold out");
+//								}
+//								System.out.println("Checking funds");
+//								userBalance.checkFunds(userBalance, singleItem);
+							if (singleItem.inStock(singleItem) && userBalance.checkFunds(userBalance, singleItem)){
+								singleItem.removeStock(singleItem, userBalance);
+								System.out.println(userBalance.getBalance());
+								userBalance.subtractTransactionCost(singleItem);
+								System.out.println(userBalance.getBalance());
+
+							}
+
+							}
+
+
+
+
+						}
+
+						/*
+						userBalance.getBalance();
+						if balance available to transact feed userProductChoice as an object to Money
+
+						 */
+
+//						System.out.println("transaction stuff happening behind scenes");
+//						userResponseMainMenu = "0";
+						userResponsePurchaseMenu = "3"; // this exits to the MAIN //todo fix to purchase
+//						userResponseMainMenu = "3";
 						//Go back to purchase menu - not main - bc if want to purchase more
 						//Finish transaction takes you back to MAIN to choose exit
 						/*
