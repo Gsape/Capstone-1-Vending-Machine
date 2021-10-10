@@ -15,10 +15,7 @@ DATE //////// TIME ////////// ACTION://///////// BALANCE BEFORE ////// BALANCE A
 
 
 Rather than print to file @ time of interaction collect an array/arraylist/ of all changes
-    -So at end of feedMoney,
-
-
-
+    -So at end of feedMoney, when validatin if in stock and userhas funds, giveChange
     -needs
         -import date/time
     -arguments
@@ -26,9 +23,6 @@ Rather than print to file @ time of interaction collect an array/arraylist/ of a
     -methods
         -openAndWriteToFile(object arraylist someShitWeDid)
         -addActionToList(String?)   <----how do we want to do this? We can pass it in an entire string of what is going on or pass it some sort of object and make a string from it?
-
-
-
 
  */
 
