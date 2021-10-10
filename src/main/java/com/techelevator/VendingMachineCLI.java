@@ -4,6 +4,7 @@ import com.techelevator.Product.*;
 import com.techelevator.UI.Inventory;
 import com.techelevator.UI.Menu;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,25 +95,35 @@ public class VendingMachineCLI {
 				if(userResponsePurchaseMenu.equals("1") || userResponsePurchaseMenu.equals("2") || userResponsePurchaseMenu.equals("3")){
 					isResponseValid = true;
 				}
-				
+
 				if(isResponseValid){
 					//TODO validation for not choosing correct
 					if(userResponsePurchaseMenu.equals("1")){
-						System.out.println("Please feed in money in whole dollar amounts $1, $2, $5, $10");
-						System.out.println("How much are you feeding? ");
-						//TODO input validation required
-						String moneyInserted = input.nextLine();
+
+						while(true) {
+							System.out.println("Please feed in money in whole dollar amounts $1, $2, $5, $10");
+							System.out.println("How much are you feeding? ");
+							//TODO input validation required
+							String moneyInserted = input.nextLine();
+							try {
+								Integer test = Integer.parseInt(moneyInserted);
+							} catch (NumberFormatException e) {
+								System.out.println("Not valid");
+								break;
+							}
+
 //					System.out.println(moneyInserted);
-						//convert from string to double
-						//update balance by calling feedMoney(moneyInserted<---as a double)
-						//double moneyInsertedAsDouble = Double.parseDouble(moneyInserted);
-						BigDecimal moneyInsertedAsBD = new BigDecimal(moneyInserted);
+							//convert from string to double
+							//update balance by calling feedMoney(moneyInserted<---as a double)
+							//double moneyInsertedAsDouble = Double.parseDouble(moneyInserted);
+							BigDecimal moneyInsertedAsBD = new BigDecimal(moneyInserted);
 
 //						double moneyInsertedAsDouble = Double.parseDouble(moneyInserted);
-					System.out.println(moneyInsertedAsBD + "You just inserted");
-						userBalance.feedMoney(moneyInsertedAsBD);
-						System.out.println("Current Money Provided: " + userBalance.getBalance());
-						break;
+							System.out.println(moneyInsertedAsBD + "You just inserted");
+							userBalance.feedMoney(moneyInsertedAsBD);
+							System.out.println("Current Money Provided: " + userBalance.getBalance());
+							break;
+						}
 					} else if(userResponsePurchaseMenu.equals("2")){
 						/*
 						-Print inventory OK*
@@ -126,15 +137,22 @@ public class VendingMachineCLI {
 						System.out.println("Here is the inventory");
 						actualInventory.printInventory();
 						System.out.println("Select product code");
-						//todo validation
 						String userProductChoice = input.nextLine();
-						System.out.println("You selected " + userProductChoice);
 
-						//need iterate thru arrayedListInventory.getSlotLocation && compare to userProductChoice
-						for(Product singleItem : arrayedListInventory) {//index
-							//CALL money w/  userBalance.getBalance to start validation
-							if (singleItem.getSlotLocation().equals(userProductChoice)) {
-								System.out.println("Checking for stock");
+
+						String[] testSlot = new String[16];
+						for(int i = 0; i < 16; i++){
+							testSlot[i] = arrayedListInventory.get(i).getSlotLocation();
+						}
+						for(String slot : testSlot) {
+							if(slot.equals(userProductChoice)){
+								System.out.println("You selected " + userProductChoice);
+
+								//need iterate thru arrayedListInventory.getSlotLocation && compare to userProductChoice
+								for(Product singleItem : arrayedListInventory) {//index
+									//CALL money w/  userBalance.getBalance to start validation
+									if (singleItem.getSlotLocation().equals(userProductChoice)) {
+										System.out.println("Checking for stock");
 //								singleItem.inStock(singleItem);
 //								if (singleItem.inStock(singleItem)) {
 //									System.out.println("removing one item from stock");
@@ -144,19 +162,23 @@ public class VendingMachineCLI {
 //								}
 //								System.out.println("Checking funds");
 //								userBalance.checkFunds(userBalance, singleItem);
-							if (singleItem.inStock(singleItem) && userBalance.checkFunds(userBalance, singleItem)){
-								singleItem.removeStock(singleItem, userBalance);
-								System.out.println(userBalance.getBalance() + "zeros");
-								userBalance.subtractTransactionCost(singleItem);
-								System.out.println(userBalance.getBalance() + "here");
-								isResponseValid = false;
-							}
+										if (singleItem.inStock(singleItem) && userBalance.checkFunds(userBalance, singleItem)){
+											singleItem.removeStock(singleItem, userBalance);
+											System.out.println(userBalance.getBalance() + "zeros");
+											userBalance.subtractTransactionCost(singleItem);
+											System.out.println(userBalance.getBalance() + "here");
+											isResponseValid = false;
+										}
+
+									}
+
+								}
+
+								userResponsePurchaseMenu = "3"; // this exits to the MAIN //todo fix to purchase
 
 							}
-
 						}
-
-						userResponsePurchaseMenu = "3"; // this exits to the MAIN //todo fix to purchase
+						System.out.println("Wrong!");
 
 					}
 
