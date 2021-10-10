@@ -66,10 +66,73 @@ methods:
     public BigDecimal getBalance(){
         return balance;
     }
+
+    public String changeReturned(BigDecimal balance){
+        String printoutPage = "";
+//        int balanceAsInt = balance.intValue();
+        int quart = 25;
+        int dime = 10;
+        int nickle = 5;
+
+        BigDecimal balance100 = balance.multiply(BigDecimal.valueOf(100));
+        int balanace100asInt = balance100.intValue();
+
+        BigDecimal zeroAsBD = new BigDecimal(0);
+
+        int quarterCount = 0;
+        int dimeCount = 0;
+        int nickleCount = 0;
+
+        while (balanace100asInt > 0){
+            if (balance100.compareTo(BigDecimal.valueOf(quart)) >= 1){
+                quarterCount++;
+//                balanceAsInt = balanceAsInt - 25;
+                balance100.subtract(BigDecimal.valueOf(quart));
+                balanace100asInt -= quart;
+
+            }
+//             if(balanceAsInt > 10){
+//                dimeCount++;
+//                balanceAsInt = balanceAsInt - 10;
+//            }  if (balanceAsInt > 5) {
+//                nickleCount++;
+//                balanceAsInt = balanceAsInt - 5;
+//            }
+        }
+
+         printoutPage = quarterCount + " Quarters " + "balanceAsInt" + " balance as INT";
+        return printoutPage;
+    }
     /*
     public bigDecimal changeReturned(BD balance){
 
+        parse BD balance to int x 100
+
+        int quart = 25
+        int dime = 10
+        int nickle = 5
+        //TODO convert back by dividing by 100
+
+       int quarterCount
+       int dimeCount
+       int nickleCount
+
+
+        while (balance >= 0)
+
+
+        **need new method for withdrawBalance()
+
         do all the math
+
+
+        **** balance 20 ****
+        while balance >= 0
+           quarterCount ++
+           balance-=25
+
+
+
 
     }
      */

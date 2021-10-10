@@ -163,6 +163,7 @@ public class VendingMachineCLI {
 //						System.out.println("transaction stuff happening behind scenes");
 //						userResponseMainMenu = "0";
 						userResponsePurchaseMenu = "3"; // this exits to the MAIN //todo fix to purchase
+
 //						userResponseMainMenu = "3";
 						//Go back to purchase menu - not main - bc if want to purchase more
 						//Finish transaction takes you back to MAIN to choose exit
@@ -179,6 +180,7 @@ public class VendingMachineCLI {
 				}
 			}
 			if(userResponseMainMenu.equals("3")){
+				System.out.println(userBalance.changeReturned(userBalance.getBalance()));
 				System.out.println("EXITING");
 				break;
 
