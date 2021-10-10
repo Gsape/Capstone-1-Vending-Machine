@@ -88,7 +88,10 @@ methods:
          int dimeCount = 0;
          int nickleCount = 0;
 
-         int balanceAsInt100 = (balance.intValue()) * 100;
+         BigDecimal oneHundred = new BigDecimal("100");
+         BigDecimal balanceBd = new BigDecimal(String.valueOf(balance.multiply(oneHundred)));
+
+         int balanceAsInt100 = (balanceBd.intValue()) ;
 
 
          while (balanceAsInt100 > 0 ){
