@@ -79,38 +79,58 @@ methods:
         int dime = 10;
         int nickle = 5;
 
-        BigDecimal balance100 = balance.multiply(BigDecimal.valueOf(100));
-        int balanace100asInt = balance100.intValue();
+//        BigDecimal balance100 = balance.multiply(BigDecimal.valueOf(100));
+//        int balanace100asInt = balance100.intValue();
+//
+//        BigDecimal zeroAsBD = new BigDecimal(0);
+//
+         int quarterCount = 0;
+         int dimeCount = 0;
+         int nickleCount = 0;
 
-        BigDecimal zeroAsBD = new BigDecimal(0);
+         int balanceAsInt100 = (balance.intValue()) * 100;
 
-        int quarterCount = 0;
-        int dimeCount = 0;
-        int nickleCount = 0;
 
-        while (balanace100asInt > 0){
-            if (balance100.compareTo(BigDecimal.valueOf(quart)) >= 1){
-                quarterCount++;
-//                balanceAsInt = balanceAsInt - 25;
-//                System.out.println("here is your current balance ");
-//                System.out.println("here is your current balance " + balanace100asInt);
-                balance100.subtract(BigDecimal.valueOf(quart));
-//                System.out.println("here is your current balance After " + balance);
-                balanace100asInt -= quart;
-                decreaseBalanceWithdraw(quart);
+         while (balanceAsInt100 > 0 ){
 
-            } else if (balance100.compareTo(BigDecimal.valueOf(dime)) >= 1) {
-                dimeCount++;
-                balance100.subtract(BigDecimal.valueOf(dime));
-                balanace100asInt -= dime;
-                decreaseBalanceWithdraw(dime);
+             if(balanceAsInt100 >= 25){
+                 quarterCount++;
+                 balanceAsInt100 -= quart;
 
-            } else if (balance100.compareTo(BigDecimal.valueOf(nickle)) >= 1){
-                nickleCount++;
-                balance100.subtract(BigDecimal.valueOf(nickle));
-                balanace100asInt -= nickle;
-                decreaseBalanceWithdraw(nickle);
-            }
+             } else if(balanceAsInt100 >= 10){
+                 dimeCount++;
+                 balanceAsInt100 -= dime;
+
+             } else if (balanceAsInt100 >= 5){
+                 nickleCount++;
+                 balanceAsInt100 -= nickle;
+             }
+
+         }
+//
+//        while (balanace100asInt > 0){
+//            if (balance100.compareTo(BigDecimal.valueOf(quart)) >= 1){
+//                quarterCount++;
+////                balanceAsInt = balanceAsInt - 25;
+////                System.out.println("here is your current balance ");
+////                System.out.println("here is your current balance " + balanace100asInt);
+//                balance100.subtract(BigDecimal.valueOf(quart));
+////                System.out.println("here is your current balance After " + balance);
+//                balanace100asInt -= quart;
+//                decreaseBalanceWithdraw(quart);
+//
+//            } else if (balance100.compareTo(BigDecimal.valueOf(dime)) >= 1) {
+//                dimeCount++;
+//                balance100.subtract(BigDecimal.valueOf(dime));
+//                balanace100asInt -= dime;
+//                decreaseBalanceWithdraw(dime);
+//
+//            } else if (balance100.compareTo(BigDecimal.valueOf(nickle)) >= 1){
+//                nickleCount++;
+//                balance100.subtract(BigDecimal.valueOf(nickle));
+//                balanace100asInt -= nickle;
+//                decreaseBalanceWithdraw(nickle);
+//            }
 
 //             if(balanceAsInt > 10){
 //                dimeCount++;
@@ -119,9 +139,9 @@ methods:
 //                nickleCount++;
 //                balanceAsInt = balanceAsInt - 5;
 //            }
-        }
+//        }
 
-         printoutPage = quarterCount + " Quarters " + dimeCount + " Dimes" + nickleCount + " Nickles";
+         printoutPage = quarterCount + " Quarters, " + dimeCount + " Dimes, " + nickleCount + " Nickles";
         return printoutPage;
     }
     /*
