@@ -99,7 +99,19 @@ methods:
                 balanace100asInt -= quart;
                 decreaseBalanceWithdraw(quart);
 
+            } else if (balance100.compareTo(BigDecimal.valueOf(dime)) >= 1) {
+                dimeCount++;
+                balance100.subtract(BigDecimal.valueOf(dime));
+                balanace100asInt -= dime;
+                decreaseBalanceWithdraw(dime);
+
+            } else if (balance100.compareTo(BigDecimal.valueOf(nickle)) >= 1){
+                nickleCount++;
+                balance100.subtract(BigDecimal.valueOf(nickle));
+                balanace100asInt -= nickle;
+                decreaseBalanceWithdraw(nickle);
             }
+
 //             if(balanceAsInt > 10){
 //                dimeCount++;
 //                balanceAsInt = balanceAsInt - 10;
@@ -109,7 +121,7 @@ methods:
 //            }
         }
 
-         printoutPage = quarterCount + " Quarters " + "balanceAsInt" + " balance as INT";
+         printoutPage = quarterCount + " Quarters " + dimeCount + " Dimes" + nickleCount + " Nickles";
         return printoutPage;
     }
     /*
