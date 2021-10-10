@@ -67,6 +67,11 @@ methods:
         return balance;
     }
 
+    public void decreaseBalanceWithdraw(int coin){
+        //balance is BD we want subtract coin from balance
+       balance = balance.subtract(BigDecimal.valueOf(coin));
+    }
+
     public String changeReturned(BigDecimal balance){
         String printoutPage = "";
 //        int balanceAsInt = balance.intValue();
@@ -87,8 +92,12 @@ methods:
             if (balance100.compareTo(BigDecimal.valueOf(quart)) >= 1){
                 quarterCount++;
 //                balanceAsInt = balanceAsInt - 25;
+//                System.out.println("here is your current balance ");
+//                System.out.println("here is your current balance " + balanace100asInt);
                 balance100.subtract(BigDecimal.valueOf(quart));
+//                System.out.println("here is your current balance After " + balance);
                 balanace100asInt -= quart;
+                decreaseBalanceWithdraw(quart);
 
             }
 //             if(balanceAsInt > 10){

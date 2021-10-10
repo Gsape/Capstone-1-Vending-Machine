@@ -181,6 +181,7 @@ public class VendingMachineCLI {
 			}
 			if(userResponseMainMenu.equals("3")){
 				System.out.println(userBalance.changeReturned(userBalance.getBalance()));
+				System.out.println(userBalance.getBalance());
 				System.out.println("EXITING");
 				break;
 
