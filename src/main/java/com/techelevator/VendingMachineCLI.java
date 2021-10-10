@@ -88,7 +88,14 @@ public class VendingMachineCLI {
 				//TODO this is where we need to get back to the purchase menu not main menu - preferably without whileCEPTION
 
 				userResponsePurchaseMenu = input.nextLine();
-				while(userResponsePurchaseMenu != "3"){ //TODO THIS IS STILL AN INFINITE LOOP - COME BACK TO FIX
+
+				boolean isResponseValid = false;
+
+				if(userResponsePurchaseMenu.equals("1") || userResponsePurchaseMenu.equals("2") || userResponsePurchaseMenu.equals("3")){
+					isResponseValid = true;
+				}
+				
+				if(isResponseValid){
 					//TODO validation for not choosing correct
 					if(userResponsePurchaseMenu.equals("1")){
 						System.out.println("Please feed in money in whole dollar amounts $1, $2, $5, $10");
@@ -142,7 +149,7 @@ public class VendingMachineCLI {
 								System.out.println(userBalance.getBalance() + "zeros");
 								userBalance.subtractTransactionCost(singleItem);
 								System.out.println(userBalance.getBalance() + "here");
-
+								isResponseValid = false;
 							}
 
 							}
@@ -151,11 +158,10 @@ public class VendingMachineCLI {
 
 						userResponsePurchaseMenu = "3"; // this exits to the MAIN //todo fix to purchase
 
-					} else{
-						System.out.println("You entered the wrong number!");
-						break;
 					}
 
+				} else{
+					System.out.println("You entered the wrong number!");
 				}
 			} else if(userResponseMainMenu.equals("3")){
 				System.out.println(userBalance.changeReturned(userBalance.getBalance()));
