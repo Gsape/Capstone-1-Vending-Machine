@@ -77,8 +77,7 @@ public class VendingMachineCLI {
 //			actualInventory.getInventory();
 //			System.out.println("Are we here ????");
 
-			}
-			if(userResponseMainMenu.equals("2")){
+			} else if(userResponseMainMenu.equals("2")){
 				String userResponsePurchaseMenu = "0";
 				System.out.println("purchase menu");
 				System.out.println("Please select one below");
@@ -107,8 +106,7 @@ public class VendingMachineCLI {
 						userBalance.feedMoney(moneyInsertedAsBD);
 						System.out.println("Current Money Provided: " + userBalance.getBalance());
 						break;
-					}
-					if(userResponsePurchaseMenu.equals("2")){
+					} else if(userResponsePurchaseMenu.equals("2")){
 						/*
 						-Print inventory OK*
 						-Pick item by slot location
@@ -149,41 +147,23 @@ public class VendingMachineCLI {
 
 							}
 
-
-
-
 						}
 
-						/*
-						userBalance.getBalance();
-						if balance available to transact feed userProductChoice as an object to Money
-
-						 */
-
-//						System.out.println("transaction stuff happening behind scenes");
-//						userResponseMainMenu = "0";
 						userResponsePurchaseMenu = "3"; // this exits to the MAIN //todo fix to purchase
 
-//						userResponseMainMenu = "3";
-						//Go back to purchase menu - not main - bc if want to purchase more
-						//Finish transaction takes you back to MAIN to choose exit
-						/*
-						-validate user chose A-4 / D-4 (if code does not exist)
-						-check if sold out - if so informed and return purchase menu
-						-if valid remove stock remove balance
-						-we will need an arraylist for LOG later. - so pop something in there when purchase
-						-print if candy gum etc noise
-						-after dispense update balance and return customer to purchase menu (with break at end)
-						 */
+					} else{
+						System.out.println("You entered the wrong number!");
+						break;
 					}
 
 				}
-			}
-			if(userResponseMainMenu.equals("3")){
+			} else if(userResponseMainMenu.equals("3")){
 				System.out.println(userBalance.changeReturned(userBalance.getBalance()));
 				System.out.println(userBalance.getBalance());
 				System.out.println("EXITING");
 				break;
+			} else {
+				System.out.println("You entered the wrong number!");
 
 			}
 
