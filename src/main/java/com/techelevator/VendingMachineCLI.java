@@ -4,6 +4,7 @@ import com.techelevator.Product.*;
 import com.techelevator.UI.Inventory;
 import com.techelevator.UI.Menu;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -98,9 +99,12 @@ public class VendingMachineCLI {
 //					System.out.println(moneyInserted);
 						//convert from string to double
 						//update balance by calling feedMoney(moneyInserted<---as a double)
-						double moneyInsertedAsDouble = Double.parseDouble(moneyInserted);
-//					System.out.println(moneyInsertedAsDouble);
-						userBalance.feedMoney(moneyInsertedAsDouble);
+						//double moneyInsertedAsDouble = Double.parseDouble(moneyInserted);
+						BigDecimal moneyInsertedAsBD = new BigDecimal(moneyInserted);
+
+//						double moneyInsertedAsDouble = Double.parseDouble(moneyInserted);
+					System.out.println(moneyInsertedAsBD + "You just inserted");
+						userBalance.feedMoney(moneyInsertedAsBD);
 						System.out.println("Current Money Provided: " + userBalance.getBalance());
 						break;
 					}
@@ -137,9 +141,9 @@ public class VendingMachineCLI {
 //								userBalance.checkFunds(userBalance, singleItem);
 							if (singleItem.inStock(singleItem) && userBalance.checkFunds(userBalance, singleItem)){
 								singleItem.removeStock(singleItem, userBalance);
-								System.out.println(userBalance.getBalance());
+								System.out.println(userBalance.getBalance() + "zeros");
 								userBalance.subtractTransactionCost(singleItem);
-								System.out.println(userBalance.getBalance());
+								System.out.println(userBalance.getBalance() + "here");
 
 							}
 

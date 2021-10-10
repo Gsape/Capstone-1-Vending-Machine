@@ -2,6 +2,8 @@ package com.techelevator.Product;
 
 import com.techelevator.Money;
 
+import java.math.BigDecimal;
+
 //Ok we are going to use this class to create each of our items so lets go
 public abstract class Product {
     private String name;
@@ -29,6 +31,12 @@ public abstract class Product {
     public String getCost() {
         return cost;
     }
+
+
+    public BigDecimal getCostBD() {
+        BigDecimal costAsBDFromStr = new BigDecimal(cost);
+        return costAsBDFromStr;
+    }
     public int getStock(){
         return stock;
     }
@@ -44,6 +52,8 @@ public abstract class Product {
             return true;
         }
     }
+
+    //
     public Product removeStock(Product stockToRemove, Money userBalance) {
         System.out.println(stockToRemove.getStock());
         stock--;
