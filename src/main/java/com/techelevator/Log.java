@@ -1,13 +1,17 @@
 package com.techelevator;
 
+import com.techelevator.Product.Product;
+
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class Log {
 
     Money userBalance = new Money();
-//  File outPutFile = new File("outPutFile.txt");
     public Log(Money userBalance) {
         this.userBalance = userBalance;
     }
@@ -17,17 +21,47 @@ public class Log {
         -write to file
         -collectionTime --- needs to collect date time action (feed $$ or what is fed out) current balance
      */
+    /*
+    https://www.w3schools.com/java/java_date.asp
+    LocalDateTime myDateObj = LocalDateTime.now();
+    System.out.println("Before formatting: " + myDateObj);
+    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
-    public void writeToFile(){
-        System.out.println("Time to write some stuff to file");
+    String formattedDate = myDateObj.format(myFormatObj);
+    System.out.println("After formatting: " + formattedDate);
+     */
 
-        //Turning this off for now because it works writing to file
-        //I need to focus on getting the information from the other classes to this file
+    public void writeToFileMoney(BigDecimal moneyFed){
+        LocalDateTime dateObject = LocalDateTime.now();
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.println(formattedDateTime + " FEED MONEY: $" + moneyFed + " $" +userBalance.getBalance());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            printWriter.println(userBalance.getBalance());
-            printWriter.println("User balance should be above");
+    }
+    public void writeToFileTransaction(Product productBought){
+        LocalDateTime dateObject = LocalDateTime.now();
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDateTime = dateObject.format(patternToFormatDateTime);
+        try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
+            PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.println(formattedDateTime + " " + productBought.getName() + " " + productBought.getSlotLocation() +" $" + userBalance.getBalance() + " $" +(userBalance.getBalance().subtract(productBought.getCostBD()))); //this isn't ideal lol
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void writeToFileChange(){
+        LocalDateTime dateObject = LocalDateTime.now();
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDateTime = dateObject.format(patternToFormatDateTime);
+        try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
+            PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.println(formattedDateTime + " GIVE CHANGE: $" + userBalance.getBalance() + " $0.00"); //this 0 is hardcoded because we haven't addressed the issue with userBalance not truly updating --- but this was before the Great OOP revelation of Oct. 10 2021 hahahah
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,6 +94,11 @@ Rather than print to file @ time of interaction collect an array/arraylist/ of a
     -methods
         -openAndWriteToFile(object arraylist someShitWeDid)
         -addActionToList(String?)   <----how do we want to do this? We can pass it in an entire string of what is going on or pass it some sort of object and make a string from it?
+
+
+
+
+
 
  */
 

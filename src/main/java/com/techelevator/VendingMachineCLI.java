@@ -32,7 +32,7 @@ public class VendingMachineCLI {
         String userResponseMainMenu = "0";
 
         while (userResponseMainMenu != "3") {
-            System.out.println("Main Main Menu");
+            System.out.println("Main Menu");
             System.out.println("Please select one below");
             System.out.println("(1) Display Vending Machine Items");
             System.out.println("(2) Purchase");
@@ -75,6 +75,7 @@ public class VendingMachineCLI {
 
                             System.out.println(moneyInsertedAsBD + "You just inserted");
                             userBalance.feedMoney(moneyInsertedAsBD);
+                            newLog.writeToFileMoney(moneyInsertedAsBD);
                             System.out.println("Current Money Provided: " + userBalance.getBalance());
                             break;
                         }
@@ -102,6 +103,7 @@ public class VendingMachineCLI {
                                         if (singleItem.inStock(singleItem) && userBalance.checkFunds(userBalance, singleItem)) {
                                             singleItem.removeStock(singleItem, userBalance);
 //                                            System.out.println(userBalance.getBalance() + " User balance before transaction");
+                                            newLog.writeToFileTransaction(singleItem);
                                             userBalance.subtractTransactionCost(singleItem);
 //                                            System.out.println(userBalance.getBalance() + " User balance after transaction");
                                         }
@@ -118,7 +120,7 @@ public class VendingMachineCLI {
             } else if (userResponseMainMenu.equals("3")) {
                 System.out.println(userBalance.changeReturned(userBalance.getBalance()));//OOPs
                 System.out.println(userBalance.getBalance());
-                newLog.writeToFile();
+                newLog.writeToFileChange();
                 System.out.println("EXITING");
                 break;
             } else {
