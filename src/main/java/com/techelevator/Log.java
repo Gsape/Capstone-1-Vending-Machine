@@ -21,19 +21,10 @@ public class Log {
         -write to file
         -collectionTime --- needs to collect date time action (feed $$ or what is fed out) current balance
      */
-    /*
-    https://www.w3schools.com/java/java_date.asp
-    LocalDateTime myDateObj = LocalDateTime.now();
-    System.out.println("Before formatting: " + myDateObj);
-    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-
-    String formattedDate = myDateObj.format(myFormatObj);
-    System.out.println("After formatting: " + formattedDate);
-     */
 
     public void writeToFileMoney(BigDecimal moneyFed){
         LocalDateTime dateObject = LocalDateTime.now();
-        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
         String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -45,7 +36,7 @@ public class Log {
     }
     public void writeToFileTransaction(Product productBought){
         LocalDateTime dateObject = LocalDateTime.now();
-        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
         String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -57,7 +48,7 @@ public class Log {
     }
     public void writeToFileChange(){
         LocalDateTime dateObject = LocalDateTime.now();
-        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
         String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -102,4 +93,13 @@ Rather than print to file @ time of interaction collect an array/arraylist/ of a
 
  */
 
+    /*
+    Code snippet taken from w3 schools to help create the date formatter ---- however also had to got o oracle docs to read about ofPattern to get the AM/PM printing.
+    https://www.w3schools.com/java/java_date.asp
+    LocalDateTime myDateObj = LocalDateTime.now();
+    System.out.println("Before formatting: " + myDateObj);
+    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
+    String formattedDate = myDateObj.format(myFormatObj);
+    System.out.println("After formatting: " + formattedDate);
+     */

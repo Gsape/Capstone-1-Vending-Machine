@@ -16,9 +16,8 @@ public class Money {
     public Money() {
     }
 
-    /*
-    methods:
-     */
+
+    //methods:
     public void feedMoney(BigDecimal moneyFed) {
         this.moneyFed = moneyFed;
         balance = balance.add(moneyFed);
@@ -76,7 +75,7 @@ public class Money {
                 balanceAsInt100 -= nickle;
             }
         }
-        printoutPage = quarterCount + " Quarters, " + dimeCount + " Dimes, " + nickleCount + " Nickles" + balance;
+        printoutPage = quarterCount + " Quarters, " + dimeCount + " Dimes, " + nickleCount + " Nickles";
         return printoutPage;
     }
 }
