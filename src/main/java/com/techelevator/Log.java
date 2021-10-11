@@ -24,7 +24,7 @@ public class Log {
 
     public void writeToFileMoney(BigDecimal moneyFed){
         LocalDateTime dateObject = LocalDateTime.now();
-        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss a");
         String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -36,7 +36,7 @@ public class Log {
     }
     public void writeToFileTransaction(Product productBought){
         LocalDateTime dateObject = LocalDateTime.now();
-        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss a");
         String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
@@ -48,7 +48,7 @@ public class Log {
     }
     public void writeToFileChange(){
         LocalDateTime dateObject = LocalDateTime.now();
-        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
+        DateTimeFormatter patternToFormatDateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss a");
         String formattedDateTime = dateObject.format(patternToFormatDateTime);
         try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
