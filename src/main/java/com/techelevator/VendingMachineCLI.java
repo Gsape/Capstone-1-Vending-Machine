@@ -110,13 +110,13 @@ public class VendingMachineCLI {
                                 userResponsePurchaseMenu = "3"; // this exits to the MAIN
                             }
                         }
-                        System.out.println("Wrong!");
+                        System.out.println("Wrong!"); //TODO fix with and if later if time
                     }
                 } else {
                     System.out.println("You entered the wrong number!");
                 }
             } else if (userResponseMainMenu.equals("3")) {
-                System.out.println(userBalance.changeReturned(userBalance.getBalance()));
+                System.out.println(userBalance.changeReturned(userBalance.getBalance()));//OOPs
                 System.out.println(userBalance.getBalance());
                 newLog.writeToFile();
                 System.out.println("EXITING");

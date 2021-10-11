@@ -10,6 +10,7 @@ public class Chips extends Product {
 
     @Override
     public void returnMessage(Product stockToRemove, Money userBalance){
-        System.out.println(stockToRemove.getName() + " $" + stockToRemove.getCost() + " $" + userBalance.getBalance() + " Crunch crunch, Yum!");
+        String printOut = stockToRemove.getName() + " $" + stockToRemove.getCost() + " $" + userBalance.getBalance() + " Crunch crunch, Yum!";
+        System.out.println(printOut);
     }
 }

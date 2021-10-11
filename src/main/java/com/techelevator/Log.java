@@ -7,9 +7,7 @@ import java.util.Scanner;
 public class Log {
 
     Money userBalance = new Money();
-
-
-//    File outPutFile = new File("outPutFile.txt");
+//  File outPutFile = new File("outPutFile.txt");
     public Log(Money userBalance) {
         this.userBalance = userBalance;
     }
@@ -17,15 +15,15 @@ public class Log {
     //Methods:
     /*
         -write to file
+        -collectionTime --- needs to collect date time action (feed $$ or what is fed out) current balance
      */
-
 
     public void writeToFile(){
         System.out.println("Time to write some stuff to file");
 
         //Turning this off for now because it works writing to file
         //I need to focus on getting the information from the other classes to this file
-        try(FileWriter fileWriter = new FileWriter("outPutFile.txt");
+        try(FileWriter fileWriter = new FileWriter("outPutFile.txt", true);
             PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
             printWriter.println(userBalance.getBalance());
@@ -35,8 +33,6 @@ public class Log {
         }
 
     }
-
-
 }
 
 
