@@ -46,9 +46,7 @@ public abstract class Product {
     }
 
     public Product removeStock(Product stockToRemove, Money userBalance) {
-        System.out.println(stockToRemove.getStock());
         stock--;
-        System.out.println(stockToRemove.getStock());
         returnMessage(stockToRemove, userBalance);
         return stockToRemove;
     }

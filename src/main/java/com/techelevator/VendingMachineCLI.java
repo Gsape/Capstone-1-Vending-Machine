@@ -21,7 +21,7 @@ public class VendingMachineCLI {
 
         ArrayList<Product> arrayedListInventory = new ArrayList<>();
         arrayedListInventory = actualInventory.createInventory();
-        System.out.println(arrayedListInventory.get(0).getName());
+//        System.out.println(arrayedListInventory.get(0).getName()); //why/how did this get here?
         Menu newTestMenu = new Menu(); //maybe keep if I get to move it into menu...
         Money userBalance = new Money();
         Log newLog = new Log(userBalance);
@@ -44,7 +44,7 @@ public class VendingMachineCLI {
 
             } else if (userResponseMainMenu.equals("2")) {
                 String userResponsePurchaseMenu = "0";
-                System.out.println("purchase menu");
+                System.out.println("Purchase Menu");
                 System.out.println("Please select one below");
                 System.out.println("(1) Feed Money");
                 System.out.println("(2) Select Product");
@@ -73,7 +73,7 @@ public class VendingMachineCLI {
 
                             BigDecimal moneyInsertedAsBD = new BigDecimal(moneyInserted);
 
-                            System.out.println(moneyInsertedAsBD + "You just inserted");
+                            System.out.println("You just inserted $" + moneyInsertedAsBD);
                             userBalance.feedMoney(moneyInsertedAsBD);
                             newLog.writeToFileMoney(moneyInsertedAsBD);
                             System.out.println("Current Money Provided: " + userBalance.getBalance());
@@ -118,8 +118,8 @@ public class VendingMachineCLI {
                     System.out.println("You entered the wrong number!");
                 }
             } else if (userResponseMainMenu.equals("3")) {
+                System.out.println("We are out of printed money so we are returning $" + userBalance.getBalance() + " as change");
                 System.out.println(userBalance.changeReturned(userBalance.getBalance()));//OOPs
-                System.out.println(userBalance.getBalance());
                 newLog.writeToFileChange();
                 System.out.println("EXITING");
                 break;
