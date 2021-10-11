@@ -1,5 +1,46 @@
 package com.techelevator;
 
+import java.io.*;
+import java.util.Scanner;
+
+
+public class Log {
+
+    Money userBalance = new Money();
+
+
+//    File outPutFile = new File("outPutFile.txt");
+    public Log(Money userBalance) {
+        this.userBalance = userBalance;
+    }
+
+    //Methods:
+    /*
+        -write to file
+     */
+
+
+    public void writeToFile(){
+        System.out.println("Time to write some stuff to file");
+
+        //Turning this off for now because it works writing to file
+        //I need to focus on getting the information from the other classes to this file
+        try(FileWriter fileWriter = new FileWriter("outPutFile.txt");
+            PrintWriter printWriter = new PrintWriter(fileWriter)) {
+
+            printWriter.println(userBalance.getBalance());
+            printWriter.println("User balance should be above");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+}
+
+
+
 /*
 IDEAS FOR LOG:
 
@@ -27,7 +68,3 @@ Rather than print to file @ time of interaction collect an array/arraylist/ of a
  */
 
 
-
-
-public class Log {
-}

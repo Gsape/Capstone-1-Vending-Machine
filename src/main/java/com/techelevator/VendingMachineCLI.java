@@ -23,10 +23,11 @@ public class VendingMachineCLI {
         arrayedListInventory = actualInventory.createInventory();
         System.out.println(arrayedListInventory.get(0).getName());
         Menu newTestMenu = new Menu(); //maybe keep if I get to move it into menu...
+        Money userBalance = new Money();
+        Log newLog = new Log(userBalance);
 
         //Start of CLI interface that will be shown to user as well as getting input
         Scanner input = new Scanner(System.in);
-        Money userBalance = new Money();
         System.out.println("------Vendo-Matic 800------");
         String userResponseMainMenu = "0";
 
@@ -117,6 +118,7 @@ public class VendingMachineCLI {
             } else if (userResponseMainMenu.equals("3")) {
                 System.out.println(userBalance.changeReturned(userBalance.getBalance()));
                 System.out.println(userBalance.getBalance());
+                newLog.writeToFile();
                 System.out.println("EXITING");
                 break;
             } else {
